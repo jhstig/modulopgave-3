@@ -2,7 +2,7 @@
 $fanTitle;
 $user = null;
 
-$inclDB = true;
+$inclDB = false;
 
 if($inclDB == true) {
     include("functions.php");
