@@ -1,11 +1,11 @@
 <?php 
 $fanTitle;
 $user = null;
-
+include("functions.php");
 $inclDB = false;
 
 if($inclDB == true) {
-    include("functions.php");
+    
     define('DBHOST', 'localhost');  
     define('DBPASS', 'root');        
     define('DBUSER', 'root');
