@@ -8,7 +8,7 @@ $deadline = "31-01-22";
 $financialYear = "01-01 til 31-12";
 
 $primaryContacts = ["Lotte"];
-$secondaryContacts = ["Bente", "Henrik"];
+$secondaryContacts = ["Bente", "Henrik", "Lise"];
 $owners = ["Thomas"];
 
 
@@ -36,9 +36,10 @@ $owners = ["Thomas"];
         border:1px solid black;
     }
     
+    
 </style>
 
-<div class="searchbar-custom container-fluid">
+<div class="searchbar-custom container-fluid"> <!-- Søgefelt -->
     <div class="row mt-2 mb-2">
         <div class="col-md-5 ">
             <!--
@@ -49,7 +50,7 @@ $owners = ["Thomas"];
             -->
             <div class="form-group my-auto">
                 <!--<label for="cvr-input">CVR</label>-->
-                <abbr title="Indtast CVR på kunden du vil slå op"><input class="form-control" id="cvr-input" type="text" placeholder="CVR:"></abbr>
+                <abbr title="Indtast CVR på kunden du vil slå op"><input class="form-control" id="cvr-input" type="text" placeholder="CVR"></abbr>
             </div>
         </div>
         <div class="col-md-2 my-md-auto mx-auto mt-1">
@@ -62,10 +63,10 @@ $owners = ["Thomas"];
 </div>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col" style="">
-            <div class="row">
-                <div class="col-md-12" style="border:2px solid black;">
+    <div class="row"> 
+        <div class="col-md-6" style="">
+            <div class="row"> <!-- primære og sekundærer kontaktpersoner -->
+                <div class="col" style="border-right:2px solid black;">
                     Primær kontaktperson:
                     <ul class="list-unstyled">
                         <?php
@@ -85,8 +86,8 @@ $owners = ["Thomas"];
                     </ul >
                 </div>
             </div>
-            <div class="row">
-                <div class="col" style="border:2px solid black;">
+            <div class="row"> <!-- filsystem -->
+                <div class="col border-right" style="border-right:2px solid black;">
                     <span class="h4">Filer</span>
                     <?php
                     foreach (dirToArray($rootFiles) as $key => $value) {
@@ -137,22 +138,22 @@ $owners = ["Thomas"];
             </div>
         </div>
         <div class="col">
-            <div class="row">
-                <div class="col" style="border:2px solid black;">
+            <div class="row"> <!-- kundeejere -->
+                <div class="col" style="">
                     Ejer(e):
                     <br> 
                     <ul class="list-unstyled">
                         <?php
                             foreach($owners as $value) {
-                                printClient($value);
+                                printEmployee($value);
                             }
                         ?>
                     </ul>
                     
                 </div>
             </div>
-            <div class="row">
-                <div class="col" style="border:2px solid black;">
+            <div class="row"> <!-- Virksomhedsinformationer -->
+                <div class="col" style="">
                     <h2>Virksomhedsinformationer</h2>
                     <ul class="list-unstyled">
                         <li>Aktiv kunde: <?php if ($active){echo "Ja";}else{ echo "Nej";}?></li>
@@ -173,33 +174,28 @@ $owners = ["Thomas"];
                             } ?>
                         </li>
                     </ul>
-                     
-                    
-                    
-            
-                    <div class="container" style="border:2px solid black;">
-                        Omsætning af de seneste 5 år
-                        <table class="table">
-                            <thead>
-                                <tr>    
-                                    <th><?php echo date("Y") - 5 ?></th>
-                                    <th><?php echo date("Y") - 4 ?></th>
-                                    <th><?php echo date("Y") - 3 ?></th>
-                                    <th><?php echo date("Y") - 2 ?></th>
-                                    <th><?php echo date("Y") - 1 ?></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>3 mil</td>
-                                    <td>1 mil</td>
-                                    <td>4 mil</td>
-                                    <td>5 mil</td>
-                                    <td>4 mil</td>
-                                </tr> 
-                            </tbody>
-                        </table>
-                    </div>
+
+                    Omsætning af de seneste 5 år
+                    <table class="table">
+                        <thead>
+                            <tr>    
+                                <th><?php echo date("Y") - 5 ?></th>
+                                <th><?php echo date("Y") - 4 ?></th>
+                                <th><?php echo date("Y") - 3 ?></th>
+                                <th><?php echo date("Y") - 2 ?></th>
+                                <th><?php echo date("Y") - 1 ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>3 mil</td>
+                                <td>1 mil</td>
+                                <td>4 mil</td>
+                                <td>5 mil</td>
+                                <td>4 mil</td>
+                            </tr> 
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

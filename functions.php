@@ -29,12 +29,13 @@ function dirToArray($dir) {
    return $result;
 }
 function printClient($name){
-   echo "<li>
-      <div class='row'>
-         <div class='col-auto' style='border:1px solid deeppink;'>
-            <img src='img\users\modulopgave 3 portrætter 1.png' alt='' style='width:50px;height:50px;'>
+   echo "
+   <li>
+      <div class='row mt-1' >
+         <div class='col-auto'>
+            <img src='img\users\modulopgave 3 portrætter 1.png' alt='' style='width:50px;height:50px;' class='rounded'>
          </div>
-         <div class='col' style='border:1px solid deeppink;'>
+         <div class='col'>
             <div class='row'>
                <div class='col'>
                   <span class='small'>" . $name . "</span>
@@ -53,5 +54,35 @@ function printClient($name){
             </div>
          </div>
       </div>
-   </li>";
+   </li>
+   ";
+}
+function printEmployee($name){
+   echo "
+   <li>
+      <div class='row mt-1' >
+         <div class='col-auto'>
+            <img src='img\users\modulopgave 3 portrætter 1.png' alt='' style='width:50px;height:50px;' class='rounded'>
+         </div>
+         <div class='col'>
+            <div class='row'>
+               <div class='col'>
+                  <span class='small'>" . $name . "</span>
+               </div>
+               <div class='col'>
+                  <span class='small'>Email</span>
+               </div>
+            </div>
+            <div class='row'>
+               <div class='col'>
+                  <span class='small'>Stilling</span> 
+               </div>
+               <div class='col'>
+                  <span class='small'>Tlf</span>
+               </div>
+            </div>
+         </div>
+      </div>
+   </li>
+   ";
 }
