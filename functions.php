@@ -28,3 +28,30 @@ function dirToArray($dir) {
    }
    return $result;
 }
+function printClient($name){
+   echo "<li>
+      <div class='row'>
+         <div class='col-auto' style='border:1px solid deeppink;'>
+            <img src='img\users\modulopgave 3 portrætter 1.png' alt='' style='width:50px;height:50px;'>
+         </div>
+         <div class='col' style='border:1px solid deeppink;'>
+            <div class='row'>
+               <div class='col'>
+                  <span class='small'>" . $name . "</span>
+               </div>
+               <div class='col'>
+                  <span class='small'>Email</span>
+               </div>
+            </div>
+            <div class='row'>
+               <div class='col'>
+                  <span class='small'>Kunde</span> 
+               </div>
+               <div class='col'>
+                  <span class='small'>Tlf</span>
+               </div>
+            </div>
+         </div>
+      </div>
+   </li>";
+}

@@ -2,6 +2,17 @@
 include('templates/header.php');
 $rootFiles = "files/";
 $currentComp = 'virksomhed1';
+$active = 1;
+$contractExpiration = "31-02-22";
+$deadline = "31-01-22";
+$financialYear = "01-01 til 31-12";
+
+$primaryContacts = ["Lotte"];
+$secondaryContacts = ["Bente", "Henrik"];
+$owners = ["Thomas"];
+
+
+
 ?>
 <style>
     .folder-custom{
@@ -29,7 +40,7 @@ $currentComp = 'virksomhed1';
 
 <div class="searchbar-custom container-fluid">
     <div class="row mt-2 mb-2">
-        <div class="col-sm-5 ">
+        <div class="col-md-5 ">
             <!--
             <div class="form-group"> 
                 <label for="customer-input">Kunde</label>
@@ -41,10 +52,10 @@ $currentComp = 'virksomhed1';
                 <abbr title="Indtast CVR på kunden du vil slå op"><input class="form-control" id="cvr-input" type="text" placeholder="CVR:"></abbr>
             </div>
         </div>
-        <div class="col-sm-2 my-sm-auto mx-auto mt-1">
+        <div class="col-md-2 my-md-auto mx-auto mt-1">
             <button class="btn btn-block">Søg</button>
         </div>
-        <div class="col-sm-5 my-sm-auto mt-1">
+        <div class="col-md-5 my-md-auto mt-1">
             <button class="btn btn-block ">Opret ny kunde</button>
         </div>
     </div>
@@ -54,52 +65,29 @@ $currentComp = 'virksomhed1';
     <div class="row">
         <div class="col" style="">
             <div class="row">
-                <div class="col" style="border:2px solid black;">
+                <div class="col-md-12" style="border:2px solid black;">
                     Primær kontaktperson:
                     <ul class="list-unstyled">
-                        <li>Navn 1</li>
+                        <?php
+                            foreach($primaryContacts as $value) {
+                                printClient($value);
+                            }
+                        ?>
+                        
                     </ul>
                     
                     Sekundær(e) kontaktperson(er)
                     <ul class="list-unstyled">
-                        <li>
-                            <div class="row">
-                                <div class="col-auto" style="border:1px solid deeppink;">
-                                    <img src="img\users\modulopgave 3 portrætter 1.png" alt="" style="width:40px;height:40px;">
-                                </div>
-                                <div class="col" style="border:1px solid deeppink;">
-                                    <div class="row">
-                                        <div class="col">
-                                            <span class="small">Navn <br> Kunde</span>
-                                            <span class="x-small"></span>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <span class="small">Email</span> 
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <span class="small">Tlf</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                        
-                        </li>
-                        <li>Navn 3</li>
+                        <?php
+                        foreach($secondaryContacts as $value){
+                            printClient($value);
+                        }?>
                     </ul >
                 </div>
             </div>
             <div class="row">
                 <div class="col" style="border:2px solid black;">
+                    <span class="h4">Filer</span>
                     <?php
                     foreach (dirToArray($rootFiles) as $key => $value) {
                         //if ($key == //client_id[searched ID]) {                        
@@ -154,7 +142,11 @@ $currentComp = 'virksomhed1';
                     Ejer(e):
                     <br> 
                     <ul class="list-unstyled">
-                        <li>Navn 4</li>
+                        <?php
+                            foreach($owners as $value) {
+                                printClient($value);
+                            }
+                        ?>
                     </ul>
                     
                 </div>
@@ -163,10 +155,23 @@ $currentComp = 'virksomhed1';
                 <div class="col" style="border:2px solid black;">
                     <h2>Virksomhedsinformationer</h2>
                     <ul class="list-unstyled">
-                        <li>Aktiv kunde: ja/nej</li>
-                        <li>Kontaktudløb:</li>
-                        <li>Deadline: N/A/31-02-22 </li>
-                        <li>Regnskabsår:01-01-31-12 </li>
+                        <li>Aktiv kunde: <?php if ($active){echo "Ja";}else{ echo "Nej";}?></li>
+                        <li>Kontraktudløb: <?php echo $contractExpiration;?></li>
+                        <li>Deadline:
+                            <?php if($deadline != null) {
+                                echo $deadline;
+                            } else {
+                                echo "N/A";
+                            } ?>
+                        </li>
+                        <li>
+                            Regnskabsår:
+                            <?php if($financialYear != null) {
+                                echo $financialYear;
+                            } else {
+                                echo "N/A";
+                            } ?>
+                        </li>
                     </ul>
                      
                     

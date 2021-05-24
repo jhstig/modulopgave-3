@@ -26,7 +26,7 @@ if($inclDB == true) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body style="font-family:arial; background-color:#ffc107;">
-<nav class="navbar navbar-expand-sm navbar-dark border-bottom" style="background-color:#000000;">
+<nav class="navbar navbar-expand-md navbar-dark border-bottom" style="background-color:#000000;">
     <a class="navbar-brand" href="index.php">Aros & Søn ApS</a>
     <button class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
