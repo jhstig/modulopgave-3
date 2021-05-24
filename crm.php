@@ -40,7 +40,7 @@ $owners = ["Thomas"];
 </style>
 
 <div class="searchbar-custom container-fluid"> <!-- Søgefelt -->
-    <div class="row mt-2 mb-2">
+    <div class="row mt-3 mb-3">
         <div class="col-md-5 ">
             <!--
             <div class="form-group"> 

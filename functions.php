@@ -31,11 +31,11 @@ function dirToArray($dir) {
 function printClient($name){
    echo "
    <li>
-      <div class='row mt-1' >
+      <div class='row mt-1 justify-content-between text-light' >
          <div class='col-auto'>
-            <img src='img\users\modulopgave 3 portrætter 1.png' alt='' style='width:50px;height:50px;' class='rounded'>
+            <img src='img\users\modulopgave 3 portrætter 1.png' alt='' style='width:50px;' class='rounded mx-auto'>
          </div>
-         <div class='col'>
+         <div class='col bg-dark rounded mr-3'>
             <div class='row'>
                <div class='col'>
                   <span class='small'>" . $name . "</span>
@@ -60,11 +60,11 @@ function printClient($name){
 function printEmployee($name){
    echo "
    <li>
-      <div class='row mt-1' >
+      <div class='row mt-1 justify-content-between text-light' >
          <div class='col-auto'>
             <img src='img\users\modulopgave 3 portrætter 1.png' alt='' style='width:50px;height:50px;' class='rounded'>
          </div>
-         <div class='col'>
+         <div class='col bg-dark rounded mr-3'>
             <div class='row'>
                <div class='col'>
                   <span class='small'>" . $name . "</span>
