@@ -34,11 +34,17 @@ function printClient($client_id, $client_user_id){
    $email = getClientUser($client_id)[$client_user_id]['email'];
    $telephone = getClientUser($client_id)[$client_user_id]['telephone'];
    $client = getClient($client_id)[0]['name'];
+   if(!empty(getClientUser($client_id)[$client_user_id]['portrait'])) {
+      $portrait = "img/users/" . getClientUser($client_id)[$client_user_id]['portrait'];
+   } else {
+      $portrait = "https://st3.depositphotos.com/4111759/13425/v/600/depositphotos_134255710-stock-illustration-avatar-vector-male-profile-gray.jpg";
+   }
+   
    echo "
    <li>
       <div class='row mt-1 justify-content-between text-light' >
          <div class='col-auto'>
-            <img src='img\users\modulopgave 3 portrætter 1.png' alt='img\users\standard.png' style='width:50px;' class='rounded-circle mx-auto'>
+            <img src='" . $portrait . "' alt='' style='width:50px;' class='rounded-circle mx-auto'>
          </div>
          <div class='col bg-dark rounded mr-3'>
             <div class='row'>
@@ -62,28 +68,39 @@ function printClient($client_id, $client_user_id){
    </li>
    ";
 }
-function printEmployee($name){
+function printEmployee($user_id){
+   $fullname = getUser($user_id)[0]['firstname'] . " " . getUser($user_id)[0]['surname'];
+   $email = getUser($user_id)[0]['email'];
+   $position_id = getUser($user_id)[0]['position_id'];
+   $position = getPosition($position_id)[0]['position'];
+   $telephone = getUser($user_id)[0]['telephone'];
+   //$portrait = getUser($user_id)[0]['portrait'];
+   if(!empty(getUser($user_id)[0]['portrait'])) {
+      $portrait = "img/users/" . getUser($user_id)[0]['portrait'];
+   } else {
+      $portrait = "https://st3.depositphotos.com/4111759/13425/v/600/depositphotos_134255710-stock-illustration-avatar-vector-male-profile-gray.jpg";
+   }
    echo "
    <li>
       <div class='row mt-1 justify-content-between text-light' >
          <div class='col-auto'>
-            <img src='img\users\modulopgave 3 portrætter 1.png' alt='' style='width:50px;height:50px;' class='rounded'>
+            <img src='". $portrait ."' alt='' style='width:50px;height:50px;' class='rounded-circle'>
          </div>
          <div class='col bg-dark rounded mr-3'>
             <div class='row'>
                <div class='col'>
-                  <span class='small'>" . $name . "</span>
+                  <span class='small'>" . $fullname . "</span>
                </div>
                <div class='col'>
-                  <span class='small'>Email</span>
+                  <span class='small'>". $email ."</span>
                </div>
             </div>
             <div class='row'>
                <div class='col'>
-                  <span class='small'>Stilling</span> 
+                  <span class='small'>" . $position . "</span> 
                </div>
                <div class='col'>
-                  <span class='small'>Tlf</span>
+                  <span class='small'>" . $telephone . "</span>
                </div>
             </div>
          </div>
@@ -105,7 +122,7 @@ function getClientByCVR($cvr) {
 }
 function getClient($client_id) {
    global $conn;
-   $sql = 'SELECT * FROM clients where cvr = "'. $client_id .'"';
+   $sql = 'SELECT * FROM clients where client_id = "'. $client_id .'"';
    $result = mysqli_query($conn, $sql);
    $client = [];
    if(mysqli_num_rows($result)>0){
@@ -169,3 +186,40 @@ function debug($var) {
    print_r($var);
    echo '</pre>';
  }
+ function getUser($user_id) {
+   global $conn;
+   $sql = 'SELECT * FROM users where user_id = "'. $user_id .'"';
+   $result = mysqli_query($conn, $sql);
+   $user = [];
+   if(mysqli_num_rows($result)>0){
+       while($row = mysqli_fetch_assoc($result)) {
+           $user[] = $row;
+       }
+   }
+   return $user;
+}
+function getOwners($client_id) {
+   global $conn;
+   $sql = 'SELECT * FROM owners where client_id = "' . $client_id . '"';
+   $result = mysqli_query($conn, $sql);
+   $owners = [];
+   if(mysqli_num_rows($result)>0){
+       while($row = mysqli_fetch_assoc($result)) {
+           $owners[] = $row;
+       }
+   }
+   return $owners;
+}
+function getPosition($position_id) {
+   global $conn;
+   $sql = 'SELECT * FROM position WHERE position_id = "'. $position_id .'"';
+   $result = mysqli_query($conn, $sql);
+   $position = [];
+   if(mysqli_num_rows($result)>0){
+       while($row = mysqli_fetch_assoc($result)) {
+           $position[] = $row;
+       }
+   }
+   return $position;
+
+}
