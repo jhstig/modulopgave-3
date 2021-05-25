@@ -1,4 +1,5 @@
 <?php
+$conn;
 
 function connect() { //connect to DB
     global $conn; //set var to global
@@ -28,28 +29,32 @@ function dirToArray($dir) {
    }
    return $result;
 }
-function printClient($name){
+function printClient($client_id, $client_user_id){
+   $fullname = getClientUser($client_id)[$client_user_id]['firstname'] . " " . getClientUser($client_id)[$client_user_id]['lastname'];
+   $email = getClientUser($client_id)[$client_user_id]['email'];
+   $telephone = getClientUser($client_id)[$client_user_id]['telephone'];
+   $client = getClient($client_id)[0]['name'];
    echo "
    <li>
       <div class='row mt-1 justify-content-between text-light' >
          <div class='col-auto'>
-            <img src='img\users\modulopgave 3 portrætter 1.png' alt='' style='width:50px;' class='rounded mx-auto'>
+            <img src='img\users\modulopgave 3 portrætter 1.png' alt='img\users\standard.png' style='width:50px;' class='rounded-circle mx-auto'>
          </div>
          <div class='col bg-dark rounded mr-3'>
             <div class='row'>
                <div class='col'>
-                  <span class='small'>" . $name . "</span>
+                  <span class='small'>" . $fullname . "</span>
                </div>
                <div class='col'>
-                  <span class='small'>Email</span>
+                  <span class='small'>" . $email . "</span>
                </div>
             </div>
             <div class='row'>
                <div class='col'>
-                  <span class='small'>Kunde</span> 
+                  <span class='small'>" . $client . "</span> 
                </div>
                <div class='col'>
-                  <span class='small'>Tlf</span>
+                  <span class='small'>" . $telephone . "</span>
                </div>
             </div>
          </div>
@@ -86,3 +91,81 @@ function printEmployee($name){
    </li>
    ";
 }
+function getClientByCVR($cvr) {
+   global $conn;
+   $sql = 'SELECT * FROM clients where cvr = "'. $cvr .'"';
+   $result = mysqli_query($conn, $sql);
+   $client = [];
+   if(mysqli_num_rows($result)>0){
+       while($row = mysqli_fetch_assoc($result)) {
+           $client[] = $row;
+       }
+   }
+   return $client;
+}
+function getClient($client_id) {
+   global $conn;
+   $sql = 'SELECT * FROM clients where cvr = "'. $client_id .'"';
+   $result = mysqli_query($conn, $sql);
+   $client = [];
+   if(mysqli_num_rows($result)>0){
+       while($row = mysqli_fetch_assoc($result)) {
+           $client[] = $row;
+       }
+   }
+   return $client;
+}
+function getClientDetails($client_id) {
+   global $conn;
+   $sql = 'SELECT * FROM client_details where client_id = "'. $client_id .'"';
+   $result = mysqli_query($conn, $sql);
+   $details = [];
+   if(mysqli_num_rows($result)>0){
+       while($row = mysqli_fetch_assoc($result)) {
+           $details[] = $row;
+       }
+   }
+   return $details;
+}
+function getClientUser($client_id) {
+   global $conn;
+   $sql = 'SELECT * FROM client_users where client = "'. $client_id .'"';
+   $result = mysqli_query($conn, $sql);
+   $clientUser = [];
+   if(mysqli_num_rows($result)>0){
+       while($row = mysqli_fetch_assoc($result)) {
+           $clientUser[] = $row;
+       }
+   }
+   return $clientUser;
+}
+function getAssocClient($client_id, $relation) {
+   global $conn;
+   $sql = 'SELECT * FROM associated_client WHERE client_id = "'. $client_id .'" AND relation_id = "'. $relation .'"';
+   $result = mysqli_query($conn, $sql);
+   $assocClient = [];
+   if(mysqli_num_rows($result)>0){
+       while($row = mysqli_fetch_assoc($result)) {
+           $assocClient[] = $row;
+       }
+   }
+   return $assocClient;
+
+}
+/*function getRelationsList($relation_name) {
+   global $conn;
+   $sql = 'SELECT * FROM client_relation where relation = "'$relation_name'"';
+   $result = mysqli_query($conn, $sql);
+   $relation = [];
+   if(mysqli_num_rows($result)>0){
+       while($row = mysqli_fetch_assoc($result)) {
+           $relation[] = $row;
+       }
+   }
+   return $relation;
+}*/
+function debug($var) {
+   echo '<pre>';
+   print_r($var);
+   echo '</pre>';
+ }

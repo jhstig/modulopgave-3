@@ -2,14 +2,14 @@
 $fanTitle;
 $user = null;
 include("functions.php");
-$inclDB = false;
+$inclDB = true;
 
 if($inclDB == true) {
     
     define('DBHOST', 'localhost');  
     define('DBPASS', 'root');        
     define('DBUSER', 'root');
-    define('DBNAME', 'filmstart');    
+    define('DBNAME', 'mydb');    
 
     connect();
 }
