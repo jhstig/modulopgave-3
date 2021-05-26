@@ -7,7 +7,7 @@ $inclDB = true;
 if($inclDB == true) {
     
     define('DBHOST', 'localhost');  
-    define('DBPASS', 'root');        
+    define('DBPASS', 'teRk3l31389');        
     define('DBUSER', 'root');
     define('DBNAME', 'mydb');    
 
