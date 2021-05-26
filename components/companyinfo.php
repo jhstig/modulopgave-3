@@ -32,11 +32,11 @@ Omsætning af de seneste 5 år
     </thead>
     <tbody>
         <tr>
-            <td>3 mil</td>
-            <td>1 mil</td>
-            <td>4 mil</td>
-            <td>5 mil</td>
-            <td>4 mil</td>
+            <td><?php echo "N/A"; ?></td>
+            <td><?php echo "N/A"; ?></td>
+            <td><?php echo "N/A"; ?></td>
+            <td><?php echo "N/A"; ?></td>
+            <td><?php echo "N/A"; ?></td>
         </tr> 
     </tbody>
 </table>
