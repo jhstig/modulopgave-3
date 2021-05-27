@@ -39,7 +39,7 @@ function printClient($client_id, $client_user_id){
    } else {
       $portrait = "https://st3.depositphotos.com/4111759/13425/v/600/depositphotos_134255710-stock-illustration-avatar-vector-male-profile-gray.jpg";
    }
-   
+
    echo "
    <li>
       <div class='row mt-1 justify-content-between text-light' >
@@ -57,7 +57,7 @@ function printClient($client_id, $client_user_id){
             </div>
             <div class='row'>
                <div class='col'>
-                  <span class='small'>" . $client . "</span> 
+                  <span class='small'>" . $client . "</span>
                </div>
                <div class='col'>
                   <span class='small'>" . $telephone . "</span>
@@ -97,7 +97,7 @@ function printEmployee($user_id){
             </div>
             <div class='row'>
                <div class='col'>
-                  <span class='small'>" . $position . "</span> 
+                  <span class='small'>" . $position . "</span>
                </div>
                <div class='col'>
                   <span class='small'>" . $telephone . "</span>
@@ -208,6 +208,7 @@ function getOwners($client_id) {
            $owners[] = $row;
        }
    }
+
    return $owners;
 }
 function getPosition($position_id) {
@@ -221,5 +222,19 @@ function getPosition($position_id) {
        }
    }
    return $position;
+
+}
+
+function getFile($files_id) {
+   global $conn;
+   $sql = 'SELECT * FROM files WHERE files_id = "'. $files_id .'"';
+   $result = mysqli_query($conn, $sql);
+   $file = [];
+   if(mysqli_num_rows($result)>0){
+       while($row = mysqli_fetch_assoc($result)) {
+           $file[] = $row;
+       }
+   }
+   return $file;
 
 }
