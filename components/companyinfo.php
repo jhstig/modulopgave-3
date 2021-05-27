@@ -1,5 +1,6 @@
 <h2>Virksomhedsinformationer</h2>
 <ul class="list-unstyled">
+    <li><span class="h4 text-underline">Kunde: <?php echo $name ?></span></li>
     <li>Aktiv kunde: <?php if ($active) {echo "Ja";}else{ echo "Nej";}?></li>
     <li>Kontraktudløb: <?php echo $contractExpiration;?></li>
     <li>Deadline:

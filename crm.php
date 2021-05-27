@@ -23,6 +23,7 @@ if(isset($_POST['cvr-input']) && !empty($_POST['cvr-input']) ){
     $primaryContacts = getAssocClient($pkCompany, 1);
     $secondaryContacts = getAssocClient($pkCompany, 2);
     $owners = getOwners($pkCompany);
+    $name = getclient($pkCompany)[0]['name'];
 }
 ?>
 <style>
@@ -67,7 +68,7 @@ if(isset($_POST['cvr-input']) && !empty($_POST['cvr-input']) ){
 </div>
 
 
-<?php if(isset($_POST['cvr-input']) && !empty($_POST['cvr-input']) ){ ?>
+<?php if(isset($_POST['cvr-input']) && !empty($_POST['cvr-input'])){ ?>
     <div class="container-fluid">
         <div class="row"> 
             <div class="col-md-6" style="">
