@@ -118,7 +118,7 @@ if(isset($_POST['cvr-input']) && !empty($_POST['cvr-input']) ){
                                             <img src='img/system/file.png' class="icon-custom"><?php echo getFile($value)[0]['filename']; ?>
                                         </div> <?php
 
-                                    } else{ ?>
+                                    } else { ?>
                                         <div class="col folder-custom lvl1-custom">
                                             <img src='img/system/folder.png' class="icon-custom"><?php echo getClient(getFile($key)[0]['client'])[0]['name']; ?>
                                         </div>
