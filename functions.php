@@ -74,7 +74,7 @@ function printEmployee($user_id){
    $position_id = getUser($user_id)[0]['position_id'];
    $position = getPosition($position_id)[0]['position'];
    $telephone = getUser($user_id)[0]['telephone'];
-   //$portrait = getUser($user_id)[0]['portrait'];
+   
    if(!empty(getUser($user_id)[0]['portrait'])) {
       $portrait = "img/users/" . getUser($user_id)[0]['portrait'];
    } else {
@@ -169,18 +169,7 @@ function getAssocClient($client_id, $relation) {
    return $assocClient;
 
 }
-/*function getRelationsList($relation_name) {
-   global $conn;
-   $sql = 'SELECT * FROM client_relation where relation = "'$relation_name'"';
-   $result = mysqli_query($conn, $sql);
-   $relation = [];
-   if(mysqli_num_rows($result)>0){
-       while($row = mysqli_fetch_assoc($result)) {
-           $relation[] = $row;
-       }
-   }
-   return $relation;
-}*/
+
 function debug($var) {
    echo '<pre>';
    print_r($var);
